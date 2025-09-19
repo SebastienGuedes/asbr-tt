@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASBR-TT - [Nom de la page]</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ======== HEADER ======== -->
+  <div data-include="partials/header.html"></div>
+
+  <!-- ======== CONTENU PRINCIPAL ======== -->
+  <main class="container">
+    <section class="hero">
+      <h2>[Titre de la page]</h2>
+      <p>
+        Ici, tu ajoutes ton contenu principal.  
+        Tu peux mettre du texte, des images, ou utiliser des blocs `.grid` et `.card` comme sur l’accueil.
+      </p>
+    </section>
+  </main>
+
+  <!-- ======== FOOTER ======== -->
+  <div data-include="partials/footer.html"></div>
+
+  <!-- Scripts -->
+  <script src="js/include.js"></script>
+</body>
+</html>
