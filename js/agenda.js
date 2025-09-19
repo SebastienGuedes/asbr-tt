@@ -1,5 +1,5 @@
-// Récupère les événements depuis Google Apps Script
-const scriptURL = "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec"; // 👉 remplace par ton URL Web App
+// ⚡ Remplace par ton vrai lien Web App GAS avec ?action=events
+const scriptURL = "https://script.google.com/macros/s/TON_ID/exec?action=events";
 
 fetch(scriptURL)
   .then(response => response.json())
@@ -7,7 +7,7 @@ fetch(scriptURL)
     const container = document.getElementById("events-container");
     const loader = document.getElementById("loading-message");
 
-    loader.style.display = "none"; // cacher le message "chargement"
+    loader.style.display = "none"; // cacher "chargement..."
 
     // Grouper les événements par date
     const grouped = {};
@@ -16,8 +16,13 @@ fetch(scriptURL)
       grouped[ev.dateKey].push(ev);
     });
 
-    // Ne garder que la date la plus proche
+    // Prendre la première date future
     const dates = Object.keys(grouped).sort();
+    if (dates.length === 0) {
+      container.innerHTML = "<p>Aucun événement à venir.</p>";
+      return;
+    }
+
     const nextDate = dates[0];
     const nextEvents = grouped[nextDate];
 
