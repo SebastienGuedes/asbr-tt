@@ -1,0 +1,46 @@
+/* ======== RESET & BASE ======== */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  line-height: 1.6;
+  background: #f8f9fa;
+  color: #2c3e50;
+}
+a { text-decoration: none; }
+img { max-width: 100%; border-radius: 10px; }
+
+/* ======== HEADER ======== */
+header {
+  background: #c0392b;
+  color: white;
+  text-align: center;
+  padding: 20px 10px;
+}
+header h1 { margin: 0; font-size: 2.2em; }
+header p { margin: 5px 0 10px; font-size: 1.1em; }
+
+nav {
+  background: #e74c3c;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 10px 0;
+}
+nav a {
+  color: white;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+nav a:hover { background: #c0392b; }
+
+/* ======== FOOTER ======== */
+footer {
+  background: #c0392b;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin-top: 40px;
+}
