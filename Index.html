@@ -125,10 +125,7 @@
 <body>
 
   <!-- ======== HEADER ======== -->
-  <header>
-    <h1>ASBR-TT</h1>
-    <p>Convivialité • Formation • Compétition</p>
-  </header>
+  <div data-include="partials/header.html"></div>
 
   <!-- ======== MENU ======== -->
   <nav>
@@ -223,10 +220,12 @@
   </div>
 
   <!-- ======== FOOTER ======== -->
-  <footer>
-    <p>© 2025 ASBR-TT. Tous droits réservés. | <a href="contact.html">Contact</a></p>
-  </footer>
+  <div data-include="partials/footer.html"></div>
+
+  <!-- Script pour inclure dynamiquement les partials (header/footer) dans la page -->
+  <script src="js/include.js"></script>
 
 </body>
 </html>
+
 
