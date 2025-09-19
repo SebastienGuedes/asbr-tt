@@ -12,40 +12,44 @@
       color: #2c3e50;
     }
 
-    /* Header et navigation (désactivés si GSite a déjà son header) */
+    /* Header et navigation */
     header {
       background: #c0392b;
       color: white;
       text-align: center;
-      padding: 30px 20px;
+      padding: 20px 10px;
     }
 
     header h1 {
       margin: 0;
-      font-size: 2.5em;
+      font-size: 2.2em;
     }
 
     header p {
-      margin: 10px 0 0;
-      font-size: 1.2em;
+      margin: 5px 0 0;
+      font-size: 1.1em;
     }
 
     nav {
       background: #e74c3c;
       display: flex;
       justify-content: center;
-      gap: 20px;
-      padding: 10px;
+      flex-wrap: wrap;
+      gap: 15px;
+      padding: 10px 0;
     }
 
     nav a {
       color: white;
       text-decoration: none;
       font-weight: bold;
+      padding: 5px 10px;
+      border-radius: 4px;
+      transition: background 0.2s;
     }
 
     nav a:hover {
-      text-decoration: underline;
+      background: #c0392b;
     }
 
     /* Conteneur principal */
@@ -55,7 +59,11 @@
       padding: 20px;
     }
 
-    /* Section hero */
+    /* Sections */
+    section {
+      margin-bottom: 30px;
+    }
+
     .hero {
       background: white;
       padding: 30px;
@@ -71,7 +79,6 @@
       margin-top: 20px;
     }
 
-    /* Grilles et cartes */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -85,6 +92,7 @@
       border-radius: 10px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
       text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
 
     .card h3 {
@@ -93,57 +101,6 @@
       color: #c0392b;
     }
 
-    /* Tarifs */
-    .tarifs h2 {
-      text-align: center;
-      color: #c0392b;
-      margin-bottom: 20px;
-    }
-
-    .tarif-card {
-      display: flex;
-      justify-content: space-between;
-      padding: 12px 15px;
-      margin-bottom: 8px;
-      border-radius: 6px;
-      font-weight: bold;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .tarif-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    }
-
-    .badge {
-      background: #c0392b;
-      color: white;
-      border-radius: 12px;
-      padding: 2px 10px;
-      font-weight: bold;
-      min-width: 50px;
-      text-align: center;
-    }
-
-    /* Bureau & Entraîneurs */
-    .bureau h2, .entraineurs h2 {
-      text-align: center;
-      color: #c0392b;
-      margin-bottom: 20px;
-    }
-
-.bureau .card h3, .entraineurs .card h3 {
-  margin: 8px 0 4px; /* réduit l’espace autour du rôle */
-  font-size: 1.1em;
-  color: #c0392b;
-}
-
-.bureau .card p, .entraineurs .card p {
-  margin: 2px 0; /* réduit l’espace entre nom et email */
-  line-height: 1.3;
-}
-
-    /* Footer */
     footer {
       background: #2c3e50;
       color: white;
@@ -156,36 +113,35 @@
       color: #f39c12;
       text-decoration: none;
     }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
   </style>
 </head>
 <body>
 
-<!-- 
 <header>
-  <h1>Club de Tennis de Table</h1>
+  <h1>ASBR-TT</h1>
   <p>Convivialité • Formation • Compétition</p>
 </header>
 
 <nav>
-  <a href="#">Accueil</a>
-  <a href="#">Équipes</a>
-  <a href="#">Horaires</a>
-  <a href="#">Inscriptions</a>
-  <a href="#">Contact</a>
+  <a href="#hero">Accueil</a>
+  <a href="#bureau">Dirigeants</a>
+  <a href="#entraineurs">Entraîneurs</a>
+  <a href="agenda.html">Agenda</a>
+  <a href="membres.html">Membres</a>
+  <a href="contact.html">Contact</a>
 </nav>
--->
 
 <div class="container">
 
   <!-- Hero -->
-  <section class="hero">
+  <section id="hero" class="hero">
     <h2>Bienvenue au club !</h2>
-    <p>
-60 ans d’histoire, des dizaines de membres passionnés, et une seule mission : vous faire vibrer avec le tennis de table !<br>
-Né en 1956 comme section de l’Amicale Sportive de Bosc Roger, le tennis de table a pris son indépendance en 2023 pour devenir l’ASBR-TT, une association dynamique ancrée dans la vie de Bosroumois.<br>
-Aujourd’hui, le club rassemble jeunes et moins jeunes autour d’une même passion, dans un esprit sportif où se mêlent santé, équilibre, plaisir du jeu et performance.<br>
-Que vous souhaitiez découvrir le tennis de table, pratiquer pour le loisir ou vous engager en compétition fédérale, nous sommes heureux de vous accueillir dans la convivialité et la bonne humeur!
-    </p>
+    <p>60 ans d’histoire, des dizaines de membres passionnés, et une seule mission : vous faire vibrer avec le tennis de table !</p>
     <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Table_tennis_table.jpg" alt="Salle de tennis de table">
   </section>
 
@@ -201,163 +157,47 @@ Que vous souhaitiez découvrir le tennis de table, pratiquer pour le loisir ou v
       <strong>Mercredi :</strong> 17h – 20h (Jeunes)<br>
       <strong>Vendredi :</strong> 19h – 22h (Compétition)</p>
     </div>
-<div class="card">
-  <h3>📞 Contactez-nous</h3>
-  <p>Pour tout renseignement, vous pouvez joindre <strong>Mireille</strong> :</p>
-  <p>
-    ✉️ <a href="mailto:mireille@example.com" style="color:#c0392b; font-weight:bold;">beaufilsmireille27@free.fr</a><br>
-    📱 <a href="tel:06 11 98 45 11" style="color:#c0392b; font-weight:bold;">06 12 34 56 78</a>
-  </p>
-</div>
-  </div>
-
-  
- <!-- ====== Section Bureau ====== -->
-<section class="bureau">
-  <h2>👥 Dirigeants</h2>
-  <div class="grid">
-    <!-- Président -->
     <div class="card">
-      <img src="https://via.placeholder.com/150" alt="Président">
-      <h3>Président</h3>
-      <p><strong>Mireille BEAUFILS</strong></p>
-      <p><a href="mailto:beaufilsmireille27@free.fr">beaufilsmireille27@free.fr</a></p>
-    </div>
-
-    <!-- Vice-président -->
-    <div class="card">
-      <img src="https://via.placeholder.com/150" alt="Vice-président">
-      <h3>Vice-président</h3>
-      <p><strong>Marie Martin</strong></p>
-      <p><a href="mailto:marie.martin@email.com">marie.martin@email.com</a></p>
-    </div>
-
-    <!-- Trésorier -->
-    <div class="card">
-      <img src="https://via.placeholder.com/150" alt="Trésorier">
-      <h3>Trésorier</h3>
-      <p><strong>Paul Leroy</strong></p>
-      <p><a href="mailto:paul.leroy@email.com">paul.leroy@email.com</a></p>
-    </div>
-
-    <!-- Secrétaire -->
-    <div class="card">
-      <img src="https://via.placeholder.com/150" alt="Secrétaire">
-      <h3>Secrétaire</h3>
-      <p><strong>Claire Dubois</strong></p>
-      <p><a href="mailto:claire.dubois@email.com">claire.dubois@email.com</a></p>
+      <h3>📞 Contactez-nous</h3>
+      <p>Pour tout renseignement, vous pouvez joindre <strong>Mireille</strong> :</p>
+      <p>
+        ✉️ <a href="mailto:beaufilsmireille27@free.fr">beaufilsmireille27@free.fr</a><br>
+        📱 <a href="tel:06 12 34 56 78">06 12 34 56 78</a>
+      </p>
     </div>
   </div>
-</section>
 
-<!-- ====== Section Entraîneurs ====== -->
-<section class="entraineurs">
-  <h2>🏓 Bénévoles encadrants</h2>
-  <div class="grid">
-    <div class="card">
-      <img src="https://via.placeholder.com/150" alt="Entraîneur 1">
-      <p><strong>Lucas Bernard</strong></p>
+  <!-- Bureau -->
+  <section id="bureau">
+    <h2>👥 Dirigeants</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="https://via.placeholder.com/150" alt="Président">
+        <h3>Président</h3>
+        <p><strong>Mireille BEAUFILS</strong></p>
+        <p><a href="mailto:beaufilsmireille27@free.fr">beaufilsmireille27@free.fr</a></p>
+      </div>
+      <!-- autres dirigeants -->
     </div>
+  </section>
 
-    <div class="card">
-      <img src="https://via.placeholder.com/150" alt="Entraîneur 2">
-      <p><strong>Sophie Martin</strong></p>
+  <!-- Entraîneurs -->
+  <section id="entraineurs">
+    <h2>🏓 Bénévoles encadrants</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="https://via.placeholder.com/150" alt="Entraîneur 1">
+        <p><strong>Lucas Bernard</strong></p>
+      </div>
+      <!-- autres entraîneurs -->
     </div>
-
-    <div class="card">
-      <img src="https://via.placeholder.com/150" alt="Entraîneur 3">
-      <p><strong>Antoine Dubois</strong></p>
-    </div>
-
-    <div class="card">
-      <img src="https://via.placeholder.com/150" alt="Entraîneur 3">
-      <p><strong>Antoine Dubois</strong></p>
-    </div>
-
-    <div class="card">
-      <img src="https://via.placeholder.com/150" alt="Entraîneur 3">
-      <p><strong>Antoine Dubois</strong></p>
-    </div>
-
-    <div class="card">
-      <img src="https://via.placeholder.com/150" alt="Entraîneur 3">
-      <p><strong>Antoine Dubois</strong></p>
-    </div>
-  </div>
-</section>
-
-<!-- ====== CSS Bureau & Entraîneurs ====== -->
-<style>
-  /* Titres */
-  .bureau h2, .entraineurs h2 {
-    text-align: center;
-    color: #c0392b;
-    margin-bottom: 20px;
-  }
-
-  /* Grilles */
-  .bureau .grid, .entraineurs .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-  }
-
-  /* Cartes */
-  .bureau .card, .entraineurs .card {
-    background: white;
-    padding: 15px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    transition: transform 0.2s, box-shadow 0.2s;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    height: 250px; /* même hauteur pour toutes les cartes */
-  }
-
-  .bureau .card:hover, .entraineurs .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  }
-
-  /* Images */
-  .bureau .card img, .entraineurs .card img {
-    width: 100%;
-    max-width: 150px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-  }
-
-  /* Titres des rôles */
-  .bureau .card h3, .entraineurs .card h3 {
-    margin: 5px 0;
-    font-size: 1.1em;
-    color: #c0392b;
-  }
-
-  /* Nom & email */
-  .bureau .card p, .entraineurs .card p {
-    margin: 2px 0;
-    line-height: 1.3;
-  }
-
-  .bureau .card a, .entraineurs .card a {
-    color: #c0392b;
-    text-decoration: none;
-    font-weight: bold;
-  }
-
-  .bureau .card a:hover, .entraineurs .card a:hover {
-    text-decoration: underline;
-  }
-</style>
+  </section>
 
 </div>
 
-
+<footer>
+  <p>© 2025 ASBR-TT. Tous droits réservés.</p>
+</footer>
 
 </body>
 </html>
