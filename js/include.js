@@ -1,16 +1,11 @@
-function includeHTML() {
-  const elements = document.querySelectorAll('[data-include]');
-  elements.forEach(el => {
-    const file = el.getAttribute('data-include');
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll("[data-include]").forEach(el => {
+    const file = el.getAttribute("data-include");
     fetch(file)
-      .then(response => {
-        if (!response.ok) throw new Error('Fichier introuvable: ' + file);
-        return response.text();
+      .then(resp => resp.text())
+      .then(html => {
+        el.innerHTML = html;
       })
-      .then(data => el.innerHTML = data)
-      .catch(err => console.error(err));
+      .catch(err => console.error("Erreur chargement include:", err));
   });
-}
-
-// Exécuter au chargement de la page
-document.addEventListener('DOMContentLoaded', includeHTML);
+});
