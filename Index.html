@@ -2,27 +2,84 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ASBR-TT - Accueil</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    /* ======== RESET & BASE ======== */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      line-height: 1.6;
+      background: #f8f9fa;
+      color: #2c3e50;
+    }
+    a { text-decoration: none; }
+    img { max-width: 100%; border-radius: 10px; }
+
+    /* ======== CONTAINER PRINCIPAL ======== */
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    /* ======== SECTIONS ======== */
+    section { margin-bottom: 30px; }
+    .hero {
+      background: white;
+      padding: 30px;
+      text-align: center;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    /* ======== GRILLES & CARTES ======== */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .card h3 { color: #c0392b; margin: 10px 0 15px; }
+  </style>
 </head>
 <body>
 
   <!-- ======== HEADER ======== -->
   <div data-include="partials/header.html"></div>
 
-  <!-- ======== CONTENU PRINCIPAL ======== -->
-  <main class="container">
-    <section class="hero">
+  <div class="container">
+
+    <!-- ======== HERO ======== -->
+    <section id="hero" class="hero">
       <h2>Bienvenue au club !</h2>
       <p>
         60 ans d’histoire, des dizaines de membres passionnés, et une seule mission : vous faire vibrer avec le tennis de table !<br>
         Né en 1956 comme section de l’Amicale Sportive de Bosc Roger, le tennis de table a pris son indépendance en 2023 pour devenir l’ASBR-TT, une association dynamique ancrée dans la vie de Bosroumois.<br>
-        Aujourd’hui, le club rassemble jeunes et moins jeunes autour d’une même passion, dans un esprit sportif où se mêlent santé, équilibre, plaisir du jeu et performance.
+        Aujourd’hui, le club rassemble jeunes et moins jeunes autour d’une même passion, dans un esprit sportif où se mêlent santé, équilibre, plaisir du jeu et performance.<br>
+        Que vous souhaitiez découvrir le tennis de table, pratiquer pour le loisir ou vous engager en compétition fédérale, nous sommes heureux de vous accueillir dans la convivialité et la bonne humeur !
       </p>
       <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Table_tennis_table.jpg" alt="Salle de tennis de table">
     </section>
 
+    <!-- ======== INFOS PRATIQUES ======== -->
     <div class="grid">
       <div class="card">
         <h3>📍 Où nous trouver</h3>
@@ -38,19 +95,20 @@
       </div>
       <div class="card">
         <h3>📞 Contactez-nous</h3>
-        <p>Pour tout renseignement, contactez <strong>Mireille</strong> :</p>
+        <p>Pour tout renseignement, vous pouvez joindre <strong>Mireille</strong> :</p>
         <p>
           ✉️ <a href="mailto:beaufilsmireille27@free.fr">beaufilsmireille27@free.fr</a><br>
-          📱 <a href="tel:0612345678">06 12 34 56 78</a>
+          📱 <a href="tel:06 12 34 56 78">06 12 34 56 78</a>
         </p>
       </div>
     </div>
-  </main>
+  </div>
 
   <!-- ======== FOOTER ======== -->
   <div data-include="partials/footer.html"></div>
 
-  <!-- Script pour charger les partials -->
+  <!-- Script pour inclure dynamiquement les partials (header/footer) dans la page -->
   <script src="js/include.js"></script>
+
 </body>
 </html>
