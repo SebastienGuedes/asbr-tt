@@ -1,142 +1,137 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ASBR-TT - Agenda</title>
-<style>
-body {
-  font-family: Arial, sans-serif;
-  background: #f8f9fa;
-  color: #2c3e50;
-  margin: 0;
-  padding: 20px;
-}
-.hero {
-  text-align: center;
-  margin-bottom: 30px;
-}
-.hero h2 {
-  color: #c0392b;
-}
-.day-title {
-  font-size: 1.3rem;
-  font-weight: bold;
-  margin: 1.5rem 0 1rem;
-  color: #c0392b;
-  border-left: 4px solid #e74c3c;
-  padding-left: 8px;
-}
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-}
-.card {
-  background: white;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  text-align: center;
-  transition: transform 0.2s, box-shadow 0.2s;
-  display: flex;
-  flex-direction: column;
-}
-.card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-.card h3 { 
-  color: #c0392b; 
-  margin-bottom: 10px; 
-}
-.event-time {
-  font-weight: bold;
-  margin-bottom: 5px;
-  color: #e74c3c;
-}
-.event-location {
-  font-size: 0.9em;
-  color: #555;
-  margin-top: auto;
-}
-#loading-message {
-  text-align: center;
-  margin: 2rem 0;
-  color: #888;
-  font-style: italic;
-}
-@media (max-width: 600px) {
-  .grid { grid-template-columns: 1fr; }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASBR-TT - Agenda</title>
+  <style>
+    /* ======== SECTIONS ======== */
+    .hero {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .hero h2 { color: #c0392b; }
+
+    .day-title {
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin: 1.5rem 0 1rem;
+      color: #c0392b;
+      border-left: 4px solid #e74c3c;
+      padding-left: 8px;
+    }
+
+    /* ======== GRILLE & CARTES ======== */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .card h3 { color: #c0392b; margin-bottom: 10px; }
+
+    .event-time {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #e74c3c;
+    }
+    .event-location {
+      font-size: 0.9em;
+      color: #555;
+      margin-top: auto;
+    }
+
+    /* ======== LOADER ======== */
+    #loading-message {
+      text-align: center;
+      margin: 2rem 0;
+      color: #888;
+      font-style: italic;
+    }
+
+    @media (max-width: 600px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- ======== HEADER ======== -->
-<div data-include="partials/header.html"></div>
+  <!-- ======== HEADER ======== -->
+  <div data-include="partials/header.html"></div>
 
-  
-<section class="hero">
-  <h2>📅 Prochain événement sportif</h2>
-  <p>Consultez directement les prochaines dates importantes du club.</p>
-</section>
+  <section class="hero">
+    <h2>📅 Prochain événement sportif</h2>
+    <p>Consultez directement les prochaines dates importantes du club.</p>
+  </section>
 
-<div id="loading-message">⏳ Les événements sont en cours de chargement…</div>
-<div id="events-container"></div>
+  <div id="loading-message">⏳ Les événements sont en cours de chargement…</div>
+  <div id="events-container"></div>
 
-<script>
-const scriptURL = "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec"; // remplace par ton URL Web App
+  <script>
+    const scriptURL = "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec"; // ton URL Web App
 
-fetch(scriptURL)
-  .then(response => response.json())
-  .then(eventsData => {
-    const container = document.getElementById("events-container");
-    const loader = document.getElementById("loading-message");
+    fetch(scriptURL)
+      .then(response => response.json())
+      .then(eventsData => {
+        const container = document.getElementById("events-container");
+        const loader = document.getElementById("loading-message");
+        loader.style.display = "none";
 
-    // Supprimer le message de chargement
-    loader.style.display = "none";
+        // Grouper par date
+        const grouped = {};
+        eventsData.forEach(ev => {
+          if (!grouped[ev.dateKey]) grouped[ev.dateKey] = [];
+          grouped[ev.dateKey].push(ev);
+        });
 
-    // Grouper par date
-    const grouped = {};
-    eventsData.forEach(ev => {
-      if (!grouped[ev.dateKey]) grouped[ev.dateKey] = [];
-      grouped[ev.dateKey].push(ev);
-    });
+        // Ne garder que la date la plus proche
+        const dates = Object.keys(grouped).sort();
+        const nextDate = dates[0];
+        const nextEvents = grouped[nextDate];
 
-    // Ne garder que la date la plus proche
-    const dates = Object.keys(grouped).sort();
-    const nextDate = dates[0];
-    const nextEvents = grouped[nextDate];
+        const formattedDate = new Date(nextDate).toLocaleDateString('fr-FR', { 
+          weekday: 'long', day: '2-digit', month: 'long' 
+        });
 
-    const formattedDate = new Date(nextDate).toLocaleDateString('fr-FR', { weekday: 'long', day: '2-digit', month: 'long' });
-
-    container.innerHTML = `
-      <h2 class="day-title">📅 ${formattedDate}</h2>
-      <div class="grid">
-        ${nextEvents.map(ev => {
-          const start = new Date(ev.start);
-          const time = start.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
-          return `
-            <div class="card">
-              <div class="event-time">🕒 ${time}</div>
-              <h3>${ev.title}</h3>
-              ${ev.location ? `<div class="event-location">📍 ${ev.location}</div>` : ""}
-            </div>`;
-        }).join('')}
-      </div>`;
-  })
-  .catch(err => {
-    document.getElementById("loading-message").textContent = "❌ Impossible de charger les événements.";
-    console.error(err);
-  });
-</script>
+        container.innerHTML = `
+          <h2 class="day-title">📅 ${formattedDate}</h2>
+          <div class="grid">
+            ${nextEvents.map(ev => {
+              const start = new Date(ev.start);
+              const time = start.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+              return `
+                <div class="card">
+                  <div class="event-time">🕒 ${time}</div>
+                  <h3>${ev.title}</h3>
+                  ${ev.location ? `<div class="event-location">📍 ${ev.location}</div>` : ""}
+                </div>`;
+            }).join('')}
+          </div>`;
+      })
+      .catch(err => {
+        document.getElementById("loading-message").textContent = "❌ Impossible de charger les événements.";
+        console.error(err);
+      });
+  </script>
 
   <!-- ======== FOOTER ======== -->
   <div data-include="partials/footer.html"></div>
 
-  <!-- Script pour inclure dynamiquement les partials (header/footer) dans la page -->
+  <!-- Script pour inclure dynamiquement les partials -->
   <script src="js/include.js"></script>
-  
+
 </body>
 </html>
