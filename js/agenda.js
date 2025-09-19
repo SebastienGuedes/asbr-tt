@@ -1,3 +1,4 @@
+// Récupère les événements depuis Google Apps Script
 const scriptURL = "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec"; // 👉 remplace par ton URL Web App
 
 fetch(scriptURL)
