@@ -1,5 +1,5 @@
 // ⚡ Remplace par ton vrai lien Web App GAS avec ?action=events
-const scriptURL = "https://script.google.com/macros/s/TON_ID/exec?action=events";
+const scriptURL = "https://script.google.com/macros/s/AKfycbxhH-4-5s1PaDskqLip46Ed-U8qyXLvW2USHnoQjGXLM4G8TxEmnLFbfcibg_13Fce4/exec?action=events";
 
 fetch(scriptURL)
   .then(response => response.json())
