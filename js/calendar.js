@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 
   const apiKey = "AIzaSyAKLNxi9CjZ5XVAHm98InSQ9UGYsET3SNU";
-  const maxResults = 10;
+  const maxResults = 1;
   const cacheKey = "calendarEventsMulti";
   const cacheTTL = 60 * 60 * 1000; // 1h
   const list = document.getElementById("calendar-events");
