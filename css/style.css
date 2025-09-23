@@ -1,28 +1,129 @@
-/* Centrer la carte principale et limiter sa largeur */
-.presentation-card {
-  max-width: 800px;      /* largeur confortable sur grand écran */
-  width: 90%;            /* occupe 90% de l'écran sur petits écrans */
-  margin: 2rem auto;     /* centre horizontalement et ajoute un top/bottom spacing */
-  padding: 2rem;
-  text-align: center;    /* centre tout le texte à l'intérieur */
+/* =========================
+   RESET & BASE
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Titre rouge doux */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5; /* fond clair doux */
+  color: #222;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================
+   MENU / NAVIGATION
+========================= */
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 1rem;
+  background-color: #fff; /* fond menu */
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin: 1rem auto;
+  max-width: 800px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #b30000; /* rouge doux */
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: background 0.3s, color 0.3s;
+}
+
+nav ul li a:hover {
+  background-color: #b30000;
+  color: #fff;
+}
+
+/* =========================
+   CARTE PRINCIPALE / MAIN
+========================= */
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem;
+}
+
+.card {
+  background: #fff; /* carte blanche */
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+  width: 90%;
+  max-width: 800px;
+  text-align: center;
+}
+
+/* =========================
+   SECTION PRÉSENTATION
+========================= */
 #presentation-club h1 {
-  color: #b30000;       /* rouge doux */
+  color: #b30000; /* titre rouge doux */
   font-size: 2.2rem;
   margin-bottom: 1.5rem;
 }
 
-/* Paragraphes lisibles */
 #presentation-club p {
   line-height: 1.7;
   margin-bottom: 1rem;
   color: #222;
 }
 
-/* Centrer bouton */
+/* =========================
+   BOUTONS
+========================= */
 button {
-  display: inline-block;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #e06666; /* rouge doux */
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
   margin-top: 1.5rem;
+  display: inline-block;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #b30000; /* rouge plus foncé au hover */
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer {
+  text-align: center;
+  padding: 1rem;
+  color: #222;
+  background: #fff; /* fond clair */
+  box-shadow: 0 -4px 8px rgba(0,0,0,0.05);
+  margin-top: auto;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media(max-width:600px){
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+  #presentation-club h1 {
+    font-size: 1.8rem;
+  }
 }
