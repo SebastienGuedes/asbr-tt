@@ -1,13 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
   const calendarIds = [
-    "calendar1@group.calendar.google.com",
-    "calendar2@group.calendar.google.com",
-    "calendar3@group.calendar.google.com",
-    "calendar4@group.calendar.google.com",
-    "calendar5@group.calendar.google.com"
+    "ieg204ssnqlgllq34rr0scpo4s@group.calendar.google.com",
+    "eakbe6t7amfckfev0e88apaacs@group.calendar.google.com",
+    "6ulpqshak5qg2shk2g6qios4qk@group.calendar.google.com",
+    "t7nbjgnsrmg8lt40ls6egpetrc@group.calendar.google.com",
+    "95sr9qt1v2l6i95r7d8i74t54g@group.calendar.google.com"
   ];
 
-  const apiKey = "TA_CLE_API";
+  const apiKey = "AIzaSyAKLNxi9CjZ5XVAHm98InSQ9UGYsET3SNU";
   const maxResults = 10;
   const cacheKey = "calendarEventsMulti";
   const cacheTTL = 60 * 60 * 1000; // 1h
