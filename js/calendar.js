@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const calendarList = document.getElementById("calendar-events");
-  const icsUrl = 'https://calendar.google.com/calendar/ical/TON_CALENDAR_ID/public/basic.ics';
+  const icsUrl = 'https://calendar.google.com/calendar/ical/ieg204ssnqlgllq34rr0scpo4s%40group.calendar.google.com/public/basic.ics';
 
   fetch(icsUrl)
     .then(res => res.text())
