@@ -127,7 +127,23 @@ h1 {
   flex-shrink: 0;
 }
 
+/* Bouton voir plus */
+#voir-plus-btn {
+  display: block;
+  margin: 1rem auto 0 auto;
+  padding: 0.6rem 1.2rem;
+  background-color: #b30000; /* rouge club */
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
 
+#voir-plus-btn:hover {
+  background-color: #800000; /* rouge plus foncé au hover */
+}
 /* Footer */
 footer {
   margin-top: auto;
