@@ -1,25 +1,39 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const calendarList = document.getElementById("calendar-events");
-  const icsUrl = 'https://calendar.google.com/calendar/ical/ieg204ssnqlgllq34rr0scpo4s%40group.calendar.google.com/private-a983cd5f2327d3a10344745ca6f33695/basic.ics';
+  const calendarId = "TON_CALENDAR_ID"; // ← Remplace par ton vrai ID
+  const apiKey = "AIzaSyAKLNxi9CjZ5XVAHm98InSQ9UGYsET3SNU";          // ← Colle ta clé API ici
+  const maxResults = 10; // nombre max d'événements à afficher
+  const list = document.getElementById("calendar-events");
 
-  fetch(icsUrl)
-    .then(res => res.text())
+  const url = `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(calendarId)}/events?key=${apiKey}&orderBy=startTime&singleEvents=true&timeMin=${new Date().toISOString()}&maxResults=${maxResults}`;
+
+  fetch(url)
+    .then(res => res.json())
     .then(data => {
-      const jcalData = ICAL.parse(data);
-      const comp = new ICAL.Component(jcalData);
-      const events = comp.getAllSubcomponents('vevent');
+      if (!data.items || data.items.length === 0) {
+        list.innerHTML = "<li>Aucun événement à venir</li>";
+        return;
+      }
 
-      events.forEach(ev => {
-        const e = new ICAL.Event(ev);
-        const li = document.createElement('li');
-        const start = e.startDate.toJSDate();
-        const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
-        li.textContent = `${start.toLocaleDateString('fr-FR', options)} - ${e.summary}`;
-        calendarList.appendChild(li);
+      data.items.forEach(ev => {
+        const li = document.createElement("li");
+
+        // Date de début (dateTime ou date simple)
+        let start;
+        if (ev.start.dateTime) {
+          start = new Date(ev.start.dateTime);
+        } else if (ev.start.date) {
+          start = new Date(ev.start.date);
+        }
+
+        const dateOptions = { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' };
+        const dateStr = start ? start.toLocaleDateString("fr-FR", dateOptions) : "Date inconnue";
+
+        li.textContent = `${dateStr} – ${ev.summary || "Sans titre"}`;
+        list.appendChild(li);
       });
     })
     .catch(err => {
-      console.error("Erreur récupération calendrier :", err);
-      calendarList.textContent = "Impossible de charger les événements pour le moment.";
+      console.error("Erreur API Google Calendar :", err);
+      list.innerHTML = "<li>Impossible de charger les événements.</li>";
     });
 });
