@@ -29,7 +29,7 @@ nav ul {
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   margin: 1rem auto;
-  max-width: 800px;
+  max-width: 900px;
 }
 
 nav ul li a {
@@ -64,7 +64,7 @@ main {
   box-shadow: 0 6px 16px rgba(0,0,0,0.1);
   margin-bottom: 2rem;
   width: 90%;
-  max-width: 800px;
+  max-width: 900px;
   text-align: center;
 }
 
