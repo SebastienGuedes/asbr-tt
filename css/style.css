@@ -50,22 +50,20 @@ nav ul li a:hover {
    CARTE PRINCIPALE / MAIN
 ========================= */
 main {
-  flex: 1;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 2rem;
+  flex-direction: column; /* Empile verticalement */
+  align-items: center;    /* Centre horizontalement */
+  padding: 2rem 1rem;
 }
 
 .card {
-  background: #fff; /* carte blanche */
-  border-radius: 12px;
+  width: 100%;
+  max-width: 900px; /* Limite la largeur pour une lecture confortable */
+  margin: 1rem 0;
   padding: 2rem;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
-  margin-bottom: 2rem;
-  width: 90%;
-  max-width: 900px;
-  text-align: center;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 /* =========================
