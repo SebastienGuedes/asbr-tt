@@ -7,42 +7,46 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <!-- Menu dynamique -->
+  <!-- Menu chargé dynamiquement -->
   <div id="menu-placeholder"></div>
 
   <main>
-    <div class="card presentation-card">
-      <!-- Section Présentation du club -->
-      <section id="presentation-club">
-        <h1>Bienvenue au club !</h1>
-        <p>
-          60 ans d’histoire, des dizaines de membres passionnés, et une seule mission : vous faire vibrer avec le tennis de table !
-        </p>
-        <p>
-          Né en 1956 comme section de l’Amicale Sportive de Bosc Roger, le tennis de table a pris son indépendance en 2023 pour devenir l’ASBR-TT, une association dynamique ancrée dans la vie de Bosroumois.
-        </p>
-        <p>
-          Aujourd’hui, le club rassemble jeunes et moins jeunes autour d’une même passion, dans un esprit sportif où se mêlent santé, équilibre, plaisir du jeu et performance.
-        </p>
-        <p>
-          Que vous souhaitiez découvrir le tennis de table, pratiquer pour le loisir ou vous engager en compétition fédérale, nous sommes heureux de vous accueillir dans la convivialité et la bonne humeur !
-        </p>
-      </section>
+    <!-- Présentation du club -->
+    <section class="card presentation">
+      <h1>Bienvenue au club !</h1>
+      <p>
+        60 ans d’histoire, des dizaines de membres passionnés, et une seule mission : vous faire vibrer avec le tennis de table !
+      </p>
+      <p>
+        Né en 1956 comme section de l’Amicale Sportive de Bosc Roger, le tennis de table a pris son indépendance en 2023 pour devenir l’ASBR-TT, une association dynamique ancrée dans la vie de Bosroumois.
+      </p>
+      <p>
+        Aujourd’hui, le club rassemble jeunes et moins jeunes autour d’une même passion, dans un esprit sportif où se mêlent santé, équilibre, plaisir du jeu et performance.
+      </p>
+      <p>
+        Que vous souhaitiez découvrir le tennis de table, pratiquer pour le loisir ou vous engager en compétition fédérale, nous sommes heureux de vous accueillir dans la convivialité et la bonne humeur !
+      </p>
+    </section>
 
-      <!-- Section Événements -->
-      <section id="evenements">
-        <h2>Événements à venir</h2>
-        <ul id="calendar-events">
-          <!-- Les événements s'affichent ici -->
-        </ul>
-      </section>
-    </div>
+    <!-- Événements -->
+    <section class="card evenements">
+      <h2>Événements à venir</h2>
+      <ul id="calendar-events">
+        <li>Chargement des événements...</li>
+      </ul>
+    </section>
   </main>
 
   <footer>
     <p>© 2025 - ASBR-TT</p>
   </footer>
 
+  <script>
+    // Chargement du menu
+    fetch("menu.html")
+      .then(res => res.text())
+      .then(html => document.getElementById("menu-placeholder").innerHTML = html);
+  </script>
   <script src="js/calendar.js"></script>
 </body>
 </html>
