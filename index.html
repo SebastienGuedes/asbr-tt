@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <!-- Menu chargé dynamiquement -->
+  <!-- Menu chargé depuis menu.html -->
   <div id="menu-placeholder"></div>
 
   <main>
@@ -15,16 +15,21 @@
     <section class="card presentation">
       <h1>Bienvenue au club !</h1>
       <p>
-        60 ans d’histoire, des dizaines de membres passionnés, et une seule mission : vous faire vibrer avec le tennis de table !
+        60 ans d’histoire, des dizaines de membres passionnés, et une seule mission :
+        vous faire vibrer avec le tennis de table !
       </p>
       <p>
-        Né en 1956 comme section de l’Amicale Sportive de Bosc Roger, le tennis de table a pris son indépendance en 2023 pour devenir l’ASBR-TT, une association dynamique ancrée dans la vie de Bosroumois.
+        Né en 1956 comme section de l’Amicale Sportive de Bosc Roger, le tennis de table a pris son indépendance en 2023
+        pour devenir l’ASBR-TT, une association dynamique ancrée dans la vie de Bosroumois.
       </p>
       <p>
-        Aujourd’hui, le club rassemble jeunes et moins jeunes autour d’une même passion, dans un esprit sportif où se mêlent santé, équilibre, plaisir du jeu et performance.
+        Aujourd’hui, le club rassemble jeunes et moins jeunes autour d’une même passion,
+        dans un esprit sportif où se mêlent santé, équilibre, plaisir du jeu et performance.
       </p>
       <p>
-        Que vous souhaitiez découvrir le tennis de table, pratiquer pour le loisir ou vous engager en compétition fédérale, nous sommes heureux de vous accueillir dans la convivialité et la bonne humeur !
+        Que vous souhaitiez découvrir le tennis de table, pratiquer pour le loisir
+        ou vous engager en compétition fédérale, nous sommes heureux de vous accueillir
+        dans la convivialité et la bonne humeur !
       </p>
     </section>
 
@@ -41,13 +46,76 @@
     <p>© 2025 - ASBR-TT</p>
   </footer>
 
+  <!-- Script pour charger le menu -->
   <script>
-    // Chargement du menu
-    fetch("/partials/menu.html")
+    fetch("menu.html")
       .then(res => res.text())
       .then(html => document.getElementById("menu-placeholder").innerHTML = html);
   </script>
-  <script src="js/calendar.js"></script>
+
+  <!-- Script calendrier avec cache -->
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const calendarId = "TON_CALENDAR_ID"; // ← Mets ton ID de calendrier
+    const apiKey = "TA_CLE_API";          // ← Mets ta clé API
+    const maxResults = 10;
+    const cacheKey = "calendarEvents";
+    const cacheTTL = 60 * 60 * 1000; // 1h
+    const list = document.getElementById("calendar-events");
+
+    function renderEvents(events) {
+      list.innerHTML = "";
+      if (!events || events.length === 0) {
+        list.innerHTML = "<li>Aucun événement à venir</li>";
+        return;
+      }
+      events.forEach(ev => {
+        let start;
+        if (ev.start.dateTime) {
+          start = new Date(ev.start.dateTime);
+        } else if (ev.start.date) {
+          start = new Date(ev.start.date);
+        }
+        const dateStr = start.toLocaleDateString("fr-FR", {
+          weekday: 'short',
+          day: 'numeric',
+          month: 'short',
+          year: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit'
+        });
+        const li = document.createElement("li");
+        li.textContent = `${dateStr} – ${ev.summary || "Sans titre"}`;
+        list.appendChild(li);
+      });
+    }
+
+    // Vérifier le cache
+    const cached = localStorage.getItem(cacheKey);
+    if (cached) {
+      const { timestamp, data } = JSON.parse(cached);
+      if (Date.now() - timestamp < cacheTTL) {
+        console.log("✅ Données chargées depuis le cache");
+        renderEvents(data.items);
+        return;
+      }
+    }
+
+    // Sinon → appel API
+    const url = `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(calendarId)}/events?key=${apiKey}&orderBy=startTime&singleEvents=true&timeMin=${new Date().toISOString()}&maxResults=${maxResults}`;
+
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        console.log("📡 Données chargées depuis l'API Google Calendar");
+        localStorage.setItem(cacheKey, JSON.stringify({ timestamp: Date.now(), data }));
+        renderEvents(data.items);
+      })
+      .catch(err => {
+        console.error("❌ Erreur API Google Calendar :", err);
+        list.innerHTML = "<li>Impossible de charger les événements.</li>";
+      });
+  });
+  </script>
 </body>
 </html>
-
