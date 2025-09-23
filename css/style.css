@@ -83,6 +83,28 @@ main {
   color: #222;
 }
 
+#calendar-events {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+#calendar-events li {
+  background: #fff;
+  border-radius: 8px;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  color: #222;
+  font-weight: 500;
+}
+
+#calendar-events li:hover {
+  background-color: #f9d6d6; /* rouge doux au survol */
+}
+
+
+
 /* =========================
    BOUTONS
 ========================= */
