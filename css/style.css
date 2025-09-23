@@ -95,19 +95,38 @@ h1 {
   margin-top: 1rem;
 }
 
+/* Supprime l'effet hover sur chaque événement */
 #calendar-events li {
-  background: #fcfcfc;
+  background: #fcfcfc; /* fond clair neutre */
   border-radius: 8px;
   padding: 10px 15px;
   margin-bottom: 10px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   font-weight: 500;
-  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* espace pour la vignette */
+  transition: none; /* plus d'effet hover */
 }
 
-#calendar-events li:hover {
-  background-color: #fce5e5;
+/* Style des en-têtes de date */
+#calendar-events li.date-header {
+  background-color: #fce5e5; /* rose doux pour date */
+  font-weight: bold;
+  margin-top: 1rem;
+  border-radius: 8px;
+  padding: 10px 15px;
 }
+
+/* Petite vignette pour chaque événement */
+.event-vignette {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #b30000; /* rouge du club */
+  flex-shrink: 0;
+}
+
 
 /* Footer */
 footer {
