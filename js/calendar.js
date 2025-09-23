@@ -87,4 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   fetchAllEvents();
+    voirPlusBtn.addEventListener("click", () => {
+    alert("Ici tu pourrais charger plus d'événements ou rediriger vers le calendrier complet !");
+  });
 });
