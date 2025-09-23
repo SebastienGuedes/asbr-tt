@@ -24,21 +24,30 @@ document.addEventListener("DOMContentLoaded", () => {
     events.forEach(ev => {
       const start = new Date(ev.start.dateTime || ev.start.date);
       const dateStr = start.toLocaleDateString("fr-FR", { weekday:'short', day:'numeric', month:'short', year:'numeric' });
-
+    
+      // Si la date change, ajouter un header
       if (dateStr !== currentDate) {
         const dateHeader = document.createElement("li");
         dateHeader.textContent = dateStr;
-        dateHeader.style.fontWeight = "bold";
-        dateHeader.style.marginTop = "1rem";
+        dateHeader.classList.add("date-header"); // ← classe pour le fond rose
         list.appendChild(dateHeader);
         currentDate = dateStr;
       }
-
+    
       const li = document.createElement("li");
+    
+      // Ajouter une vignette à gauche
+      const vignette = document.createElement("div");
+      vignette.classList.add("event-vignette");
+      li.appendChild(vignette);
+    
       const timeStr = start.toLocaleTimeString("fr-FR", { hour:'2-digit', minute:'2-digit' });
-      li.textContent = `${timeStr} – ${ev.summary || "Sans titre"}`;
+      const text = document.createTextNode(` ${timeStr} – ${ev.summary || "Sans titre"}`);
+      li.appendChild(text);
+    
       list.appendChild(li);
     });
+
   }
 
   // Vérifier cache
