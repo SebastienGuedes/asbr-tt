@@ -73,6 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
       results.forEach(data => { if (data.items) allEvents = allEvents.concat(data.items); });
 
       allEvents.sort((a, b) => new Date(a.start.dateTime || a.start.date) - new Date(b.start.dateTime || b.start.date));
+      console.log("📡 Données chargées depuis l'API Google Calendar", allEvents);
       localStorage.setItem(cacheKey, JSON.stringify(allEvents));
 
       renderEventsWithDateBreaks(allEvents);
