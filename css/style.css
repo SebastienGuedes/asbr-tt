@@ -60,6 +60,14 @@ main {
   gap: 2rem;
 }
 
+/* Titres principaux */
+h1 {
+  color: #b30000; /* rouge profond pour le peps */
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+
+
 /* Cartes */
 .card {
   width: 100%;
