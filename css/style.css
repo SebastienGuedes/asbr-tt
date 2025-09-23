@@ -7,28 +7,29 @@
 
 body {
   font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #8B0000, #000000); /* rouge foncé → noir */
-  color: #fff;
+  background-color: #f5f5f5; /* fond clair doux */
+  color: #222; /* texte principal sombre mais doux */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-/* Header / menu */
+/* Menu / navigation */
 nav ul {
   list-style: none;
   display: flex;
   justify-content: center;
   gap: 20px;
   padding: 1rem;
-  background-color: rgba(0,0,0,0.7);
+  background-color: #fff; /* fond blanc du menu */
   border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   margin: 1rem;
 }
 
 nav ul li a {
   text-decoration: none;
-  color: #ff4d4d; /* rouge clair */
+  color: #b30000; /* rouge doux */
   font-weight: bold;
   padding: 8px 16px;
   border-radius: 8px;
@@ -36,8 +37,8 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-  background-color: #ff4d4d; /* rouge clair */
-  color: #000; /* texte noir sur hover */
+  background-color: #b30000; /* rouge doux */
+  color: #fff; /* texte blanc au hover */
 }
 
 /* Carte centrale */
@@ -50,38 +51,40 @@ main {
 }
 
 .card {
-  background: #1c1c1c; /* noir foncé */
+  background: #fff; /* carte blanche */
   border-radius: 12px;
   padding: 2rem;
   max-width: 600px;
   width: 100%;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
   margin-bottom: 2rem;
-  color: #fff;
+  color: #222;
 }
 
+/* Bouton doux rouge */
 button {
   padding: 10px 20px;
   border: none;
   border-radius: 8px;
-  background: #ff4d4d; /* rouge */
-  color: #000; /* texte noir */
+  background: #e06666; /* rouge doux */
+  color: #fff;
   font-size: 16px;
   cursor: pointer;
   margin-top: 1rem;
-  transition: background 0.3s ease, color 0.3s ease;
+  transition: background 0.3s ease;
 }
 
 button:hover {
-  background: #8B0000; /* rouge foncé */
-  color: #fff;
+  background: #b30000; /* rouge plus foncé au hover */
 }
 
+/* Footer */
 footer {
   text-align: center;
   padding: 1rem;
-  color: #fff;
-  background: rgba(0,0,0,0.7);
+  color: #222;
+  background: #fff; /* fond clair */
+  box-shadow: 0 -4px 8px rgba(0,0,0,0.05);
 }
 
 /* Responsive */
