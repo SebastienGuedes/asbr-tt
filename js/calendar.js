@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const calendarId = "TON_CALENDAR_ID"; // ← Remplace par ton vrai ID
+  const calendarId = "ieg204ssnqlgllq34rr0scpo4s@group.calendar.google.com"; // ← Remplace par ton vrai ID
   const apiKey = "AIzaSyAKLNxi9CjZ5XVAHm98InSQ9UGYsET3SNU";          // ← Colle ta clé API ici
   const maxResults = 10; // nombre max d'événements à afficher
   const list = document.getElementById("calendar-events");
