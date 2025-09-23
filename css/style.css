@@ -7,8 +7,8 @@
 
 body {
   font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #6a11cb, #2575fc);
-  color: #333;
+  background: linear-gradient(135deg, #8B0000, #000000); /* rouge foncé → noir */
+  color: #fff;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -21,22 +21,23 @@ nav ul {
   justify-content: center;
   gap: 20px;
   padding: 1rem;
-  background-color: rgba(0,0,0,0.2);
+  background-color: rgba(0,0,0,0.7);
   border-radius: 12px;
   margin: 1rem;
 }
 
 nav ul li a {
   text-decoration: none;
-  color: white;
+  color: #ff4d4d; /* rouge clair */
   font-weight: bold;
   padding: 8px 16px;
   border-radius: 8px;
-  transition: background 0.3s;
+  transition: background 0.3s, color 0.3s;
 }
 
 nav ul li a:hover {
-  background-color: rgba(255,255,255,0.3);
+  background-color: #ff4d4d; /* rouge clair */
+  color: #000; /* texte noir sur hover */
 }
 
 /* Carte centrale */
@@ -49,36 +50,38 @@ main {
 }
 
 .card {
-  background: white;
+  background: #1c1c1c; /* noir foncé */
   border-radius: 12px;
   padding: 2rem;
   max-width: 600px;
   width: 100%;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.5);
   margin-bottom: 2rem;
+  color: #fff;
 }
 
 button {
   padding: 10px 20px;
   border: none;
   border-radius: 8px;
-  background: #2575fc;
-  color: white;
+  background: #ff4d4d; /* rouge */
+  color: #000; /* texte noir */
   font-size: 16px;
   cursor: pointer;
   margin-top: 1rem;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 button:hover {
-  background: #6a11cb;
+  background: #8B0000; /* rouge foncé */
+  color: #fff;
 }
 
 footer {
   text-align: center;
   padding: 1rem;
-  color: white;
-  background: rgba(0,0,0,0.2);
+  color: #fff;
+  background: rgba(0,0,0,0.7);
 }
 
 /* Responsive */
