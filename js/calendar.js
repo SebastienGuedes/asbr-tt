@@ -88,13 +88,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+
   // Initial fetch
   fetchAllEvents();
 
   // Bouton "Voir plus"
-voirPlusBtn.addEventListener("click", () => {
-  alert("Vous avez cliqué !");
-});
+  voirPlusBtn.addEventListener("click", () => {
+    maxResults += incrementResults; // augmenter le nombre d'événements par calendrier
+    console.log(`🔽 Chargement de ${maxResults} événements par calendrier`);
     fetchAllEvents();
   });
 });
