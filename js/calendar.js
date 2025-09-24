@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 
   const apiKey = "AIzaSyAKLNxi9CjZ5XVAHm98InSQ9UGYsET3SNU";
-  let maxResults = 5; // nombre initial d'événements par calendrier
+  let maxResults = 1; // nombre initial d'événements par calendrier
   const incrementResults = 5; // nombre d'événements supplémentaires au clic
   const cacheKey = "calendarEventsMulti";
   const cacheTTL = 60 * 60 * 1000; // 1h
@@ -92,9 +92,9 @@ document.addEventListener("DOMContentLoaded", () => {
   fetchAllEvents();
 
   // Bouton "Voir plus"
-  voirPlusBtn.addEventListener("click", () => {
-    maxResults += incrementResults; // augmenter le nombre d'événements par calendrier
-    console.log(`🔽 Chargement de ${maxResults} événements par calendrier`);
+voirPlusBtn.addEventListener("click", () => {
+  alert("Vous avez cliqué !");
+});
     fetchAllEvents();
   });
 });
