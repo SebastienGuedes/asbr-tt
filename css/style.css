@@ -155,54 +155,63 @@ footer {
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
 }
-.infos-pratiques .info-grid {
+
+
+.infos-pratiques-graphique .info-cards {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
   margin-top: 1rem;
 }
 
-.info-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
+.info-card {
+  flex: 1;
+  background: #fce5e5; /* rose doux pour fond */
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: default;
 }
 
-.info-item .icon {
-  font-size: 2rem;
+.info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.info-card .icon {
+  font-size: 2.5rem;
   color: #b30000;
-  flex-shrink: 0;
+  margin-bottom: 0.5rem;
+  display: block;
 }
 
-.info-item h2 {
-  font-size: 1.2rem;
-  margin-bottom: 0.3rem;
+.info-card h2 {
   color: #b30000;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
 }
 
-.info-item p {
-  font-size: 1rem;
+.info-card p {
   color: #333;
+  font-size: 1rem;
+  line-height: 1.4;
 }
 
-.info-item a {
+.info-card a {
   color: #b30000;
   text-decoration: none;
   font-weight: 500;
 }
 
-.info-item a:hover {
+.info-card a:hover {
   text-decoration: underline;
 }
 
-/* Responsive pour petits écrans */
-@media (min-width: 600px) {
-  .infos-pratiques .info-grid {
+/* Responsive pour grands écrans */
+@media (min-width: 700px) {
+  .infos-pratiques-graphique .info-cards {
     flex-direction: row;
-    justify-content: space-between;
-  }
-  .info-item {
-    flex: 1;
+    gap: 1.5rem;
   }
 }
-
