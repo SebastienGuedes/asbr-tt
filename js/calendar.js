@@ -86,10 +86,6 @@ document.addEventListener("DOMContentLoaded", () => {
       list.innerHTML = "<li>Impossible de charger les événements.</li>";
     }
   }
-  // Ajouter l'événement clic
-  voirPlusBtn.addEventListener("click", () => {
-    alert("Ici tu pourrais charger plus d'événements ou rediriger vers le calendrier complet !");
-  });
  
   fetchAllEvents();
 
