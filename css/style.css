@@ -1,11 +1,15 @@
-/* Reset simple */
+/* ========================= */
+/* RESET DE BASE             */
+/* ========================= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Body et mise en page */
+/* ========================= */
+/* BODY & MISE EN PAGE        */
+/* ========================= */
 body {
   font-family: "Segoe UI", Arial, sans-serif;
   line-height: 1.6;
@@ -16,7 +20,9 @@ body {
   min-height: 100vh;
 }
 
-/* Menu */
+/* ========================= */
+/* MENU (NAVBAR)             */
+/* ========================= */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -51,7 +57,9 @@ body {
   color: #b30000;
 }
 
-/* Main */
+/* ========================= */
+/* MAIN & STRUCTURE PRINCIPALE */
+/* ========================= */
 main {
   display: flex;
   flex-direction: column;
@@ -60,7 +68,9 @@ main {
   gap: 2rem;
 }
 
-/* Titres principaux */
+/* ========================= */
+/* TITRES PRINCIPAUX (H1)   */
+/* ========================= */
 h1 {
   color: #b30000; /* rouge profond pour le peps */
   font-size: 2.2rem;
@@ -68,8 +78,9 @@ h1 {
   text-align: center;
 }
 
-
-/* Cartes */
+/* ========================= */
+/* CARTES GENERALES          */
+/* ========================= */
 .card {
   width: 100%;
   max-width: 900px;
@@ -88,14 +99,15 @@ h1 {
   text-align: left;
 }
 
-/* Liste des événements */
+/* ========================= */
+/* LISTE DES ÉVÉNEMENTS      */
+/* ========================= */
 #calendar-events {
   list-style: none;
   padding: 0;
   margin-top: 1rem;
 }
 
-/* Supprime l'effet hover sur chaque événement */
 #calendar-events li {
   background: #fcfcfc; /* fond clair neutre */
   border-radius: 8px;
@@ -109,7 +121,6 @@ h1 {
   transition: none; /* plus d'effet hover */
 }
 
-/* Style des en-têtes de date */
 #calendar-events li.date-header {
   background-color: #fce5e5; /* rose doux pour date */
   font-weight: bold;
@@ -127,7 +138,9 @@ h1 {
   flex-shrink: 0;
 }
 
-/* Bouton voir plus */
+/* ========================= */
+/* BOUTON "VOIR PLUS"        */
+/* ========================= */
 #voir-plus-btn {
   display: block;
   margin: 1rem auto 0 auto;
@@ -144,7 +157,10 @@ h1 {
 #voir-plus-btn:hover {
   background-color: #800000; /* rouge plus foncé au hover */
 }
-/* Footer */
+
+/* ========================= */
+/* FOOTER                    */
+/* ========================= */
 footer {
   margin-top: auto;
   text-align: center;
@@ -156,7 +172,9 @@ footer {
   border-top-right-radius: 12px;
 }
 
-
+/* ========================= */
+/* INFOS PRATIQUES - GRAPHIQUE */
+/* ========================= */
 .infos-pratiques-graphique .info-cards {
   display: flex;
   flex-direction: column;
@@ -208,7 +226,9 @@ footer {
   text-decoration: underline;
 }
 
-/* Responsive pour grands écrans */
+/* ========================= */
+/* RESPONSIVE POUR GRANDS ÉCRANS */
+/* ========================= */
 @media (min-width: 700px) {
   .infos-pratiques-graphique .info-cards {
     flex-direction: row;
