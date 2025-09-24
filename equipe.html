@@ -3,65 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Équipe - ASBR-TT</title>
-  <!-- CSS avec version pour forcer le rechargement -->
-  <link rel="stylesheet" href="css/style.css?v=2">
+  <title>Contact - Club Tennis de Table</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <!-- ========================= -->
-  <!-- MENU PRINCIPAL DU SITE    -->
-  <!-- ========================= -->
   <div id="menu-placeholder"></div>
 
   <main>
-    <!-- ========================= -->
-    <!-- SECTION : ÉQUIPE DU CLUB  -->
-    <!-- ========================= -->
-    <section class="card">
-      <h1>Notre Équipe</h1>
-      <p>Voici les membres du club de tennis de tableeeeeeeeeeeeeeeeeeeeeeeeeee.</p>
-
-      <!-- Exemple de membres (modifiable) -->
-      <div class="info-cards">
-        <div class="info-card">
-          <span class="icon">🏓</span>
-          <h2>Jean Dupont</h2>
-          <p>Président</p>
-        </div>
-        <div class="info-card">
-          <span class="icon">🏓</span>
-          <h2>Marie Martin</h2>
-          <p>Entraîneuse</p>
-        </div>
-        <div class="info-card">
-          <span class="icon">🏓</span>
-          <h2>Lucas Bernard</h2>
-          <p>Trésorier</p>
-        </div>
-      </div>
-    </section>
+    <div class="card">
+      <h1>Contactez-nous</h1>
+      <p>Email : contact@ttclub.fr</p>
+      <p>Téléphone : 06 12 34 56 78</p>
+    </div>
   </main>
 
-  <!-- ========================= -->
-  <!-- FOOTER DU SITE           -->
-  <!-- ========================= -->
   <footer>
-    <p>© 2025 - ASBR-TT</p>
+    <p>© 2025 - Club de Tennis de Table</p>
   </footer>
 
-  <!-- ========================= -->
-  <!-- SCRIPTS JS               -->
-  <!-- ========================= -->
-
-  <!-- Charger dynamiquement le menu avec paramètre anti-cache -->
-  <script>
-    const menuVersion = Date.now(); // timestamp pour forcer le navigateur à recharger
-    fetch(`partials/menu.html?v=${menuVersion}`)
-      .then(res => res.text())
-      .then(html => document.getElementById("menu-placeholder").innerHTML = html);
-  </script>
-
-  <!-- Script principal du site avec version -->
-  <script src="js/script.js?v=2"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>
+
