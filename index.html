@@ -7,11 +7,15 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <!-- Menu -->
+  <!-- ========================= -->
+  <!-- MENU PRINCIPAL DU SITE -->
+  <!-- ========================= -->
   <div id="menu-placeholder"></div>
 
   <main>
-    <!-- Présentation du club -->
+    <!-- ========================= -->
+    <!-- SECTION : PRÉSENTATION DU CLUB -->
+    <!-- ========================= -->
     <section class="card presentation">
       <h1>Bienvenue au club !</h1>
       <p>
@@ -28,34 +32,42 @@
       </p>
     </section>
 
+    <!-- ========================= -->
+    <!-- SECTION : INFOS PRATIQUES (GRAPHIQUE) -->
+    <!-- ========================= -->
+    <section class="card infos-pratiques-graphique">
+      <h1>Infos pratiques</h1>
 
-<!-- Infos pratiques - version graphique -->
-<section class="card infos-pratiques-graphique">
-  <h1>Infos pratiques</h1>
-  <div class="info-cards">
-    <div class="info-card">
-      <span class="icon">📍</span>
-      <h2>Où nous trouver</h2>
-      <p>Gymnase de Bosc Roger, 76260 Bosc Roger-en-Roumois</p>
-    </div>
-    <div class="info-card">
-      <span class="icon">⏰</span>
-      <h2>Horaires</h2>
-      <p>Lundi au vendredi : 18h - 22h<br>Samedi : 10h - 14h</p>
-    </div>
-    <div class="info-card">
-      <span class="icon">✉️</span>
-      <h2>Contactez-nous</h2>
-      <p>Email : <a href="mailto:contact@asbr-tt.fr">contact@asbr-tt.fr</a><br>Tél : 06 12 34 56 78</p>
-    </div>
-  </div>
-</section>
+      <!-- Conteneur des mini-cartes d'infos -->
+      <div class="info-cards">
+        
+        <!-- Carte 1 : Localisation -->
+        <div class="info-card">
+          <span class="icon">📍</span>
+          <h2>Où nous trouver</h2>
+          <p>Gymnase de Bosc Roger, 76260 Bosc Roger-en-Roumois</p>
+        </div>
 
+        <!-- Carte 2 : Horaires -->
+        <div class="info-card">
+          <span class="icon">⏰</span>
+          <h2>Horaires</h2>
+          <p>Lundi au vendredi : 18h - 22h<br>Samedi : 10h - 14h</p>
+        </div>
 
+        <!-- Carte 3 : Contact -->
+        <div class="info-card">
+          <span class="icon">✉️</span>
+          <h2>Contactez-nous</h2>
+          <p>Email : <a href="mailto:contact@asbr-tt.fr">contact@asbr-tt.fr</a><br>Tél : 06 12 34 56 78</p>
+        </div>
 
+      </div> <!-- /info-cards -->
+    </section>
 
-    
-    <!-- Événements -->
+    <!-- ========================= -->
+    <!-- SECTION : ÉVÉNEMENTS À VENIR -->
+    <!-- ========================= -->
     <section class="card evenements">
       <h1>Prochain événement</h1>
       <ul id="calendar-events">
@@ -63,13 +75,21 @@
       </ul>
       <button id="voir-plus-btn">Voir plus d'événements</button>
     </section>
+
   </main>
 
+  <!-- ========================= -->
+  <!-- FOOTER DU SITE -->
+  <!-- ========================= -->
   <footer>
     <p>© 2025 - ASBR-TT</p>
   </footer>
 
-  <!-- Charger le menu -->
+  <!-- ========================= -->
+  <!-- SCRIPTS JS -->
+  <!-- ========================= -->
+
+  <!-- Charger le menu depuis un fichier externe -->
   <script>
     fetch("partials/menu.html")
       .then(res => res.text())
@@ -78,10 +98,6 @@
 
   <!-- Script calendrier multi-calendriers avec cache -->
   <script src="js/calendar.js"></script>
+
 </body>
 </html>
-
-
-
-
-
