@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Équipe - ASBR-TT</title>
-  <link rel="stylesheet" href="css/style.css">
+  <!-- CSS avec version pour forcer le rechargement -->
+  <link rel="stylesheet" href="css/style.css?v=2">
 </head>
 <body>
   <!-- ========================= -->
@@ -20,7 +21,7 @@
       <h1>Notre Équipe</h1>
       <p>Voici les membres du club de tennis de table.</p>
 
-      <!-- Exemple de membres (à personnaliser) -->
+      <!-- Exemple de membres (modifiable) -->
       <div class="info-cards">
         <div class="info-card">
           <span class="icon">🏓</span>
@@ -51,14 +52,16 @@
   <!-- ========================= -->
   <!-- SCRIPTS JS               -->
   <!-- ========================= -->
-  <!-- Charger dynamiquement le menu -->
+
+  <!-- Charger dynamiquement le menu avec paramètre anti-cache -->
   <script>
-    fetch("partials/menu.html")
+    const menuVersion = Date.now(); // timestamp pour forcer le navigateur à recharger
+    fetch(`partials/menu.html?v=${menuVersion}`)
       .then(res => res.text())
       .then(html => document.getElementById("menu-placeholder").innerHTML = html);
   </script>
 
-  <!-- Script principal du site -->
-  <script src="js/script.js"></script>
+  <!-- Script principal du site avec version -->
+  <script src="js/script.js?v=2"></script>
 </body>
 </html>
