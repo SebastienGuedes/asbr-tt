@@ -16,64 +16,38 @@ document.addEventListener("DOMContentLoaded", () => {
   const voirPlusBtn = document.getElementById("voir-plus-btn");
 
   function renderEventsWithDateBreaks(events) {
-   list.innerHTML = "";
+    list.innerHTML = "";
     if (!events || events.length === 0) {
-      list.innerHTML = "<p>Aucun événement à venir</p>";
+      list.innerHTML = "<li>Aucun événement à venir</li>";
       return;
     }
-  
+
     let currentDate = "";
     events.forEach(ev => {
       const start = new Date(ev.start.dateTime || ev.start.date);
-      const dateStr = start.toLocaleDateString("fr-FR", {
-        weekday: 'long',
-        day: 'numeric',
-        month: 'long',
-        year: 'numeric'
-      });
-      const timeStr = start.toLocaleTimeString("fr-FR", {
-        hour: '2-digit',
-        minute: '2-digit'
-      });
-  
-      // Rupture par date (un titre par journée)
+      const dateStr = start.toLocaleDateString("fr-FR", { weekday:'short', day:'numeric', month:'short', year:'numeric' });
+
       if (dateStr !== currentDate) {
-        const dateHeader = document.createElement("h3");
+        const dateHeader = document.createElement("li");
         dateHeader.textContent = dateStr;
         dateHeader.classList.add("date-header");
         list.appendChild(dateHeader);
         currentDate = dateStr;
       }
-  
-      // Créer la carte
-      const card = document.createElement("div");
-      card.classList.add("event-card");
-  
-      const leftBar = document.createElement("div");
-      leftBar.classList.add("event-bar");
-      card.appendChild(leftBar);
-  
-      const content = document.createElement("div");
-      content.classList.add("event-content");
-  
-      const title = document.createElement("h4");
-      title.textContent = ev.summary || "Sans titre";
-  
-      const time = document.createElement("p");
-      time.textContent = `🕒 ${timeStr}`;
-  
-      const location = document.createElement("p");
-      location.textContent = ev.location ? `📍 ${ev.location}` : "📍 Lieu à confirmer";
-  
-      content.appendChild(title);
-      content.appendChild(time);
-      content.appendChild(location);
-  
-      card.appendChild(content);
-      list.appendChild(card);
+
+      const li = document.createElement("li");
+
+      const vignette = document.createElement("div");
+      vignette.classList.add("event-vignette");
+      li.appendChild(vignette);
+
+      const timeStr = start.toLocaleTimeString("fr-FR", { hour:'2-digit', minute:'2-digit' });
+      const text = document.createTextNode(` ${timeStr} – ${ev.summary || "Sans titre"}`);
+      li.appendChild(text);
+
+      list.appendChild(li);
     });
   }
-
 
 
 
