@@ -1,4 +1,7 @@
 // Charger le menu depuis partials/menu.html
+
+console.log("script.js chargé !");
+
 document.addEventListener("DOMContentLoaded", () => {
   const menuPlaceholder = document.getElementById("menu-placeholder");
   if(menuPlaceholder){
