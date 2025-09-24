@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const apiKey = "AIzaSyAKLNxi9CjZ5XVAHm98InSQ9UGYsET3SNU";
   let maxResults = 1; // nombre initial d'événements par calendrier
   const cacheKey = "calendarEventsMulti";
-  const cacheTTL = 60 * 60 * 1000; // 1h
+  const cacheTTL = 1;//60 * 60 * 1000; // 1h
 
   const list = document.getElementById("calendar-events");
   const voirPlusBtn = document.getElementById("voir-plus-btn");
