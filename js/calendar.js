@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const apiKey = "AIzaSyAKLNxi9CjZ5XVAHm98InSQ9UGYsET3SNU";
   let maxResults = 1; // nombre initial d'événements par calendrier
-  const incrementResults = 5; // nombre d'événements supplémentaires au clic
   const cacheKey = "calendarEventsMulti";
   const cacheTTL = 60 * 60 * 1000; // 1h
 
@@ -28,7 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const start = new Date(ev.start.dateTime || ev.start.date);
       const dateStr = start.toLocaleDateString("fr-FR", { weekday:'short', day:'numeric', month:'short', year:'numeric' });
 
-      // Header pour les nouvelles dates
       if (dateStr !== currentDate) {
         const dateHeader = document.createElement("li");
         dateHeader.textContent = dateStr;
@@ -39,7 +37,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const li = document.createElement("li");
 
-      // Vignette rouge à gauche
       const vignette = document.createElement("div");
       vignette.classList.add("event-vignette");
       li.appendChild(vignette);
@@ -59,9 +56,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (Date.now() - timestamp < cacheTTL) {
       console.log("✅ Données depuis cache");
       renderEventsWithDateBreaks(data);
+      return;
     }
   }
 
+  // Fonction pour récupérer les événements depuis l'API
   async function fetchAllEvents() {
     let allEvents = [];
     try {
@@ -74,7 +73,6 @@ document.addEventListener("DOMContentLoaded", () => {
       results.forEach(data => { if (data.items) allEvents = allEvents.concat(data.items); });
 
       allEvents.sort((a, b) => new Date(a.start.dateTime || a.start.date) - new Date(b.start.dateTime || b.start.date));
-      console.log("📡 Données chargées depuis l'API Google Calendar", allEvents);
 
       localStorage.setItem(cacheKey, JSON.stringify({
         timestamp: Date.now(),
@@ -88,14 +86,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-
   // Initial fetch
   fetchAllEvents();
 
-  // Bouton "Voir plus"
+  // Bouton "Voir plus" : simple alert
   voirPlusBtn.addEventListener("click", () => {
-    maxResults += incrementResults; // augmenter le nombre d'événements par calendrier
-    console.log(`🔽 Chargement de ${maxResults} événements par calendrier`);
-    fetchAllEvents();
+    alert("Vous avez cliqué !");
   });
 });
