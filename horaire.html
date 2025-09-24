@@ -4,22 +4,44 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Équipe - Club Tennis de Table</title>
+  <!-- Lien vers le CSS principal -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <!-- ========================= -->
+  <!-- MENU PRINCIPAL DU SITE    -->
+  <!-- ========================= -->
   <div id="menu-placeholder"></div>
 
   <main>
+    <!-- ========================= -->
+    <!-- SECTION : ÉQUIPE DU CLUB  -->
+    <!-- ========================= -->
     <div class="card">
       <h1>Notre Équipe</h1>
       <p>Voici les membres du club de tennis de table.</p>
+      <!-- Tu pourras ajouter ici une liste ou des cartes pour chaque membre -->
     </div>
   </main>
 
+  <!-- ========================= -->
+  <!-- FOOTER DU SITE           -->
+  <!-- ========================= -->
   <footer>
     <p>© 2025 - Club de Tennis de Table</p>
   </footer>
 
+  <!-- ========================= -->
+  <!-- SCRIPTS JS               -->
+  <!-- ========================= -->
+  <!-- Charger le menu depuis le fichier externe -->
+  <script>
+    fetch("partials/menu.html")
+      .then(res => res.text())
+      .then(html => document.getElementById("menu-placeholder").innerHTML = html);
+  </script>
+
+  <!-- Script principal du site -->
   <script src="js/script.js"></script>
 </body>
 </html>
