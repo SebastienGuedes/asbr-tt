@@ -8,11 +8,13 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 
   const apiKey = "AIzaSyAKLNxi9CjZ5XVAHm98InSQ9UGYsET3SNU";
-  const maxResults = 1;
+  let maxResults = 5; // nombre initial d'événements par calendrier
+  const incrementResults = 5; // nombre d'événements supplémentaires au clic
   const cacheKey = "calendarEventsMulti";
   const cacheTTL = 60 * 60 * 1000; // 1h
+
   const list = document.getElementById("calendar-events");
-  const voirPlusBtn = document.getElementById("voir-plus-btn"); // ← récupération du bouton
+  const voirPlusBtn = document.getElementById("voir-plus-btn");
 
   function renderEventsWithDateBreaks(events) {
     list.innerHTML = "";
@@ -25,30 +27,29 @@ document.addEventListener("DOMContentLoaded", () => {
     events.forEach(ev => {
       const start = new Date(ev.start.dateTime || ev.start.date);
       const dateStr = start.toLocaleDateString("fr-FR", { weekday:'short', day:'numeric', month:'short', year:'numeric' });
-    
-      // Si la date change, ajouter un header
+
+      // Header pour les nouvelles dates
       if (dateStr !== currentDate) {
         const dateHeader = document.createElement("li");
         dateHeader.textContent = dateStr;
-        dateHeader.classList.add("date-header"); // ← classe pour le fond rose
+        dateHeader.classList.add("date-header");
         list.appendChild(dateHeader);
         currentDate = dateStr;
       }
-    
+
       const li = document.createElement("li");
-    
-      // Ajouter une vignette à gauche
+
+      // Vignette rouge à gauche
       const vignette = document.createElement("div");
       vignette.classList.add("event-vignette");
       li.appendChild(vignette);
-    
+
       const timeStr = start.toLocaleTimeString("fr-FR", { hour:'2-digit', minute:'2-digit' });
       const text = document.createTextNode(` ${timeStr} – ${ev.summary || "Sans titre"}`);
       li.appendChild(text);
-    
+
       list.appendChild(li);
     });
-
   }
 
   // Vérifier cache
@@ -58,7 +59,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (Date.now() - timestamp < cacheTTL) {
       console.log("✅ Données depuis cache");
       renderEventsWithDateBreaks(data);
-      return;
     }
   }
 
@@ -75,6 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       allEvents.sort((a, b) => new Date(a.start.dateTime || a.start.date) - new Date(b.start.dateTime || b.start.date));
       console.log("📡 Données chargées depuis l'API Google Calendar", allEvents);
+
       localStorage.setItem(cacheKey, JSON.stringify({
         timestamp: Date.now(),
         data: allEvents
@@ -86,8 +87,14 @@ document.addEventListener("DOMContentLoaded", () => {
       list.innerHTML = "<li>Impossible de charger les événements.</li>";
     }
   }
- 
+
+  // Initial fetch
   fetchAllEvents();
 
+  // Bouton "Voir plus"
+  voirPlusBtn.addEventListener("click", () => {
+    maxResults += incrementResults; // augmenter le nombre d'événements par calendrier
+    console.log(`🔽 Chargement de ${maxResults} événements par calendrier`);
+    fetchAllEvents();
   });
 });
