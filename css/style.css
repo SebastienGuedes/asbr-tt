@@ -126,63 +126,7 @@ h1 {
   background-color: #b30000; /* rouge du club */
   flex-shrink: 0;
 }
-/* Section événements */
-.evenements {
-  margin-top: 2rem;
-}
 
-/* Titres de date */
-.date-header {
-  margin: 2rem 0 1rem;
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #b30000;
-}
-
-/* Grille responsive pour les cartes */
-#calendar-events {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1rem;
-}
-
-/* Carte événement */
-.event-card {
-  display: flex;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  overflow: hidden;
-  transition: transform 0.2s ease;
-}
-
-.event-card:hover {
-  transform: translateY(-3px);
-}
-
-/* Barre rouge à gauche */
-.event-bar {
-  width: 8px;
-  background: #b30000;
-}
-
-/* Contenu carte */
-.event-content {
-  padding: 1rem;
-  flex: 1;
-}
-
-.event-content h4 {
-  margin: 0 0 0.5rem;
-  font-size: 1.1rem;
-  color: #222;
-}
-
-.event-content p {
-  margin: 0.3rem 0;
-  color: #444;
-  font-size: 0.9rem;
-}
 /* Bouton voir plus */
 #voir-plus-btn {
   display: block;
