@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const cacheKey = "calendarEventsMulti";
   const cacheTTL = 60 * 60 * 1000; // 1h
   const list = document.getElementById("calendar-events");
+  const voirPlusBtn = document.getElementById("voir-plus-btn"); // ← récupération du bouton
 
   function renderEventsWithDateBreaks(events) {
     list.innerHTML = "";
