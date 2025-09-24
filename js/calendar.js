@@ -49,12 +49,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-
-
-
-
-  
-
   // Vérifier cache
   const cached = localStorage.getItem(cacheKey);
   if (cached) {
