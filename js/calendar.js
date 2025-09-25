@@ -8,46 +8,68 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 
   const apiKey = "AIzaSyAKLNxi9CjZ5XVAHm98InSQ9UGYsET3SNU";
-  let maxResults = 1; // nombre initial d'événements par calendrier
+  let maxResults = 2; // nombre initial d'événements par calendrier
   const cacheKey = "calendarEventsMulti";
   const cacheTTL = 60 * 60 * 1000; // 1h
 
   const list = document.getElementById("calendar-events");
   const voirPlusBtn = document.getElementById("voir-plus-btn");
 
-  function renderEventsWithDateBreaks(events) {
-    list.innerHTML = "";
-    if (!events || events.length === 0) {
-      list.innerHTML = "<li>Aucun événement à venir</li>";
-      return;
+function renderEventsWithDateBreaks(events) {
+  list.innerHTML = "";
+  if (!events || events.length === 0) {
+    list.innerHTML = "<li>Aucun événement à venir</li>";
+    return;
+  }
+
+  let currentDate = "";
+  events.forEach(ev => {
+    const start = new Date(ev.start.dateTime || ev.start.date);
+    const dateStr = start.toLocaleDateString("fr-FR", { weekday:'short', day:'numeric', month:'short', year:'numeric' });
+
+    // En-tête de date
+    if (dateStr !== currentDate) {
+      const dateHeader = document.createElement("li");
+      dateHeader.textContent = dateStr;
+      dateHeader.classList.add("date-header");
+      list.appendChild(dateHeader);
+      currentDate = dateStr;
     }
 
-    let currentDate = "";
-    events.forEach(ev => {
-      const start = new Date(ev.start.dateTime || ev.start.date);
-      const dateStr = start.toLocaleDateString("fr-FR", { weekday:'short', day:'numeric', month:'short', year:'numeric' });
+    // Élément événement
+    const li = document.createElement("li");
+    li.classList.add("event-item");
 
-      if (dateStr !== currentDate) {
-        const dateHeader = document.createElement("li");
-        dateHeader.textContent = dateStr;
-        dateHeader.classList.add("date-header");
-        list.appendChild(dateHeader);
-        currentDate = dateStr;
-      }
+    // Vignette
+    const vignette = document.createElement("div");
+    vignette.classList.add("event-vignette");
+    li.appendChild(vignette);
 
-      const li = document.createElement("li");
+    // Conteneur texte
+    const content = document.createElement("div");
+    content.classList.add("event-content");
 
-      const vignette = document.createElement("div");
-      vignette.classList.add("event-vignette");
-      li.appendChild(vignette);
+    // Titre + heure
+    const title = document.createElement("div");
+    const timeStr = start.toLocaleTimeString("fr-FR", { hour:'2-digit', minute:'2-digit' });
+    title.classList.add("event-title");
+    title.textContent = `${timeStr} – ${ev.summary || "Sans titre"}`;
+    content.appendChild(title);
 
-      const timeStr = start.toLocaleTimeString("fr-FR", { hour:'2-digit', minute:'2-digit' });
-      const text = document.createTextNode(` ${timeStr} – ${ev.summary || "Sans titre"}`);
-      li.appendChild(text);
+    // Lieu (optionnel)
+    if (ev.location) {
+      const location = document.createElement("div");
+      location.classList.add("event-location");
+      location.textContent = ev.location;
+      content.appendChild(location);
+    }
 
-      list.appendChild(li);
-    });
-  }
+    li.appendChild(content);
+    list.appendChild(li);
+  });
+}
+
+
 
   // Vérifier cache
   const cached = localStorage.getItem(cacheKey);
