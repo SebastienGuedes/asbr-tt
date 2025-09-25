@@ -1,27 +1,42 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact - Club Tennis de Table</title>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-  <div id="menu-placeholder"></div>
-
-  <main>
-    <div class="card">
-      <h1>Contactez-nous</h1>
-      <p>Email : contact@ttclub.fr</p>
-      <p>Téléphone : 06 12 34 56 78</p>
-    </div>
-  </main>
-
-  <footer>
-    <p>© 2025 - Club de Tennis de Table</p>
-  </footer>
-
-  <script src="js/script.js"></script>
-</body>
+<html>
+  <head>
+    <base target="_top">
+    <meta charset="UTF-8">
+    <title>Équipes</title>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 20px; background: #f9f9f9; }
+      h1 { text-align: center; color: #222; margin-bottom: 30px; }
+      .equipe { background: #fff; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);}
+      .equipe h2 { margin: 0 0 10px; font-size: 20px; color: #0077cc; }
+      .meta { margin: 5px 0; font-weight: 500; }
+      .joueurs { margin-top: 10px; padding-left: 15px; }
+      .joueur { margin-bottom: 5px; }
+      .capitaine { color: #e67e22; }
+      .referent { color: #27ae60; }
+    </style>
+  </head>
+  <body>
+    <h1>Liste des équipes</h1>
+    <? for (let eq of equipesList) { ?>
+      <div class="equipe">
+        <h2><?= eq.epreuve ?> - Équipe <?= eq.equipe ?></h2>
+        
+        <? if (eq.capitaine) { ?>
+          <div class="meta capitaine">👨‍✈️ Capitaine : <?= eq.capitaine.prenom ?> <?= eq.capitaine.nom ?> (<?= eq.capitaine.licence ?>)</div>
+        <? } ?>
+        
+        <? if (eq.referent) { ?>
+          <div class="meta referent">📌 Référent : <?= eq.referent ?></div>
+        <? } ?>
+        
+        <div class="joueurs">
+          <strong>👥 Joueurs :</strong><br>
+          <? for (let j of eq.joueurs) { ?>
+            <div class="joueur">- <?= j.prenom ?> <?= j.nom ?> (<?= j.licence ?>)</div>
+          <? } ?>
+        </div>
+      </div>
+    <? } ?>
+  </body>
 </html>
-
