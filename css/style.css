@@ -226,6 +226,139 @@ footer {
   text-decoration: underline;
 }
 
+.info-link {
+  color: #b30000; /* rouge club */
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.info-link:hover {
+  text-decoration: underline;
+}
+
+/* ========================= */
+/* TARIFS LICENCES           */
+/* ========================= */
+.tarifs h2 {
+  color: #b30000;
+  margin: 1.5rem 0 1rem;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.tarifs-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+}
+
+.tarifs-table th,
+.tarifs-table td {
+  border: 1px solid #ddd;
+  padding: 0.8rem;
+  text-align: center;
+}
+
+.tarifs-table th {
+  background-color: #fce5e5;
+  color: #b30000;
+  font-weight: bold;
+}
+
+.tarifs-table tr:nth-child(even) {
+  background-color: #fcfcfc;
+}
+
+.tarifs-table tr:hover {
+  background-color: #f9f0f0;
+  transition: background 0.2s;
+}
+
+/* ========================= */
+/* DOCUMENTATION LICENCES    */
+/* ========================= */
+.documentation h2 {
+  color: #b30000;
+  margin: 1.5rem 0 1rem;
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+.doc-block p {
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #333;
+}
+
+.doc-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+}
+
+.doc-table th,
+.doc-table td {
+  border: 1px solid #ddd;
+  padding: 0.8rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.doc-table th {
+  background-color: #fce5e5;
+  color: #b30000;
+  font-weight: bold;
+  text-align: center;
+}
+
+.doc-table tr:nth-child(even) {
+  background-color: #fcfcfc;
+}
+
+.doc-table tr:hover {
+  background-color: #f9f0f0;
+  transition: background 0.2s;
+}
+
+.doc-table em {
+  color: #b30000;
+  font-weight: 500;
+}
+
+/* ========================= */
+/* HORAIRES                  */
+/* ========================= */
+
+.horaire-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+.horaire-table th {
+  background-color: #b30000;
+  color: #fff;
+  background-color: #fce5e5;
+  color: #b30000;  
+  padding: 0.6rem;
+  text-align: left;
+}
+
+.horaire-table td {
+  padding: 0.6rem;
+  border-bottom: 1px solid #eee;
+}
+
+.horaire-table tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+.horaire-table tr:hover {
+  background: #fce5e5;
+}
+
+
+
 /* ========================= */
 /* RESPONSIVE POUR GRANDS ÉCRANS */
 /* ========================= */
